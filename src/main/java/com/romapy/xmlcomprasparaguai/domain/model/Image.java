@@ -7,7 +7,7 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "r_view_url_product_images")
+//@Table(name = "r_view_url_product_images")
 public class Image {
 
     @EmbeddedId

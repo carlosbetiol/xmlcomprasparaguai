@@ -11,10 +11,10 @@ import java.io.Serializable;
 @Embeddable
 public class imageId implements Serializable {
 
-//    @Column(name = "id_image")
+    @Column(name = "id_image")
     private Integer idImage;
 
-//    @JsonProperty("codigo")
+    @JsonProperty("codigo")
     @Column(name = "product_code")
     private String productIdPega;
 
