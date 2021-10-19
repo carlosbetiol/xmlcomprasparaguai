@@ -11,6 +11,8 @@
 
 Linkedin: https://www.linkedin.com/in/carlosbetiol/
 
+Email: carlos@betiol.dev
+
 
 
 [To english version click here](README.md)
@@ -252,3 +254,4 @@ Para expor o container docker para a internet foi necessário instalar um contai
 
 Linkedin: https://www.linkedin.com/in/carlosbetiol/
 
+Email: carlos@betiol.dev

@@ -11,6 +11,8 @@
 
 Linkedin: https://www.linkedin.com/in/carlosbetiol/
 
+Email: carlos@betiol.dev
+
 
 
 [Para versão em português clique aqui](README-pt.md)
@@ -250,4 +252,6 @@ To expose the docker container to the internet it was necessary to install an Ng
 [<img src="https://avatars.githubusercontent.com/carlosbetiol" width=115><br><sub>Carlos Betiol</sub>](https://github.com/carlosbetiol)
 
 Linkedin: https://www.linkedin.com/in/carlosbetiol/
+
+Email: carlos@betiol.dev
 
