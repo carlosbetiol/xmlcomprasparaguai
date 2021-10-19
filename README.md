@@ -17,7 +17,7 @@
 
 ## Tópicos
 
-
+[TOC]
 
 
 
@@ -38,6 +38,54 @@ Foi utilizado o JAVA 16, porém pode ser modificado para utilizar qualquer vers�
 Maven foi o gerenciador de pacotes utilizado para o projeto.
 
 Todos os parâmetros como: dados de conexão com o banco de dados, porta a ser utilizada, whitelist de endereços de IP, dentre outros, deverão ser enviados como variáveis de ambiente.
+
+
+
+## Dependências
+
+- Spring boot starter web
+- MySQL connector Java (v8.0.25)
+- Jackson dataformat XML
+- Dockerfile maven plugin
+- Spring boot starter security
+- Spring boot starter data JPA (hibernate incluido)
+
+
+
+## Banco de dados
+
+O projeto foi preparado para conexão com banco de dados **MySQL** versão 5.6 utilizando o dialeto MySQL5Dialect, entretanto ele funcionará para conexão em versões mais atuais do MySQL, sendo necessário para isto, mudar dialeto no application.properties para org.hibernate.dialect.MySQL8Dialect.
+
+Será necessário utilizar uma tabela no banco de dados cujo nome deve ser identificado pelo conteúdo da variável de ambiente **TABLE_NAME**. Também poderá ser utilizado uma **VIEW** do banco de dados caso haja necessidade de transformação direta de dados através de **SELECT**.
+
+A estrutura de dados deve ser como segue:
+
+```
+create table custom_table_name (
+   id_image int(11) not null,
+   product_code varchar(14) not null,
+   image_url varchar(255) not null default '',
+   price varchar(20) not null default '',
+   availability varchar(30) not null default '',
+   brand varchar(50) not null default '',
+   product_name varchar(255) not null default '',
+   url_web varchar(255) not null default '',
+   description_short text,
+   primary key (id_image,product_code) using btree,
+) engine = InnoDB;
+```
+
+A chave primária é composta pelos campos **id_image** e **product_code** sendo que no primeiro pode ser armazenado um id sequencial e no segundo o código do produto no sistema da empresa. Caso não haja repetição de código então no **id_image** pode ser armazenado o valor **1** para todas as linhas. Abaixo um dicionário de dados:
+
+- id_image - Compõe a chave primária da tabela, pode ser uma numeração sequencial ou 1.
+- product_code - Compõe a chave primária e refere-se ao código do produto no sistema da empresa.
+- image_url - URL completa da imagem do produto no site da empresa (deve ser https).
+- price - Preço do produto no tipo alfanumérico, exemplo: 235.00 USD.
+- availability - Disponibilidade do produto podendo ser "disponível" ou "indisponível".
+- brand - Marca do produto.
+- product_name - Nome do produto.
+- url_web - URL completa da página do produto no site da empresa.
+- description_short - Um breve descritivo textual do produto.
 
 
 
@@ -82,4 +130,91 @@ Uma nova compilação é necessária com a geração do novo container Docker, u
 ```
 ./mvnw clean package -Pdocker
 ```
+
+
+
+## Métodos
+
+Requisições para a API devem seguir os padrões:
+
+| Método | Descrição                        |
+| ------ | -------------------------------- |
+| GET    | Retorna os dados no formato XML. |
+
+
+
+## Respostas
+
+| Código | Descrição                         |
+| ------ | --------------------------------- |
+| 200    | Requisição executada com sucesso. |
+| 403    | Acesso proibido                   |
+
+
+
+## Exemplo de resposta
+
+```
+<rss version="2.0">
+    <channel>
+        <title>Roma Shopping</title>
+        <link>https://www.romapy.com</link>
+        <description>A loja completa.</description>
+        <item>
+            <description>Os suprimentos originais da Lexmark são projetados para funcionar melhor com as impressoras Lexmark, proporcionando excelente qualidade de impressão da primeira à última página. 
+</description>
+            <codigo>100012</codigo>
+            <link>https://www.romapy.com/4723-toner-lexmark-34018hl-black---34018hl.html</link>
+            <link_imagem>https://www.romapy.com/img/p/1/5/3/6/6/15366.jpg</link_imagem>
+            <preco>116.00 USD</preco>
+            <disponibilidade>indisponivel</disponibilidade>
+            <marca>Lexmark</marca>
+            <title>TONER LEXMARK 34018HL BLACK - 34018HL</title>
+        </item>
+        <item>
+            <description>Os suprimentos originais da Lexmark são projetados para funcionar melhor com as impressoras Lexmark, proporcionando excelente qualidade de impressão da primeira à última página. 
+</description>
+            <codigo>100012</codigo>
+            <link>https://www.romapy.com/4723-toner-lexmark-34018hl-black---34018hl.html</link>
+            <link_imagem>https://www.romapy.com/img/p/1/5/3/6/7/15367.jpg</link_imagem>
+            <preco>116.00 USD</preco>
+            <disponibilidade>indisponivel</disponibilidade>
+            <marca>Lexmark</marca>
+            <title>TONER LEXMARK 34018HL BLACK - 34018HL</title>
+        </item>
+        <item>
+            <description>Os suprimentos originais da Lexmark são projetados para funcionar melhor com as impressoras Lexmark, proporcionando excelente qualidade de impressão da primeira à última página. 
+</description>
+            <codigo>100023</codigo>
+            <link>https://www.romapy.com/4724-toner-lexmark-w84020h-black---w84020h.html</link>
+            <link_imagem>https://www.romapy.com/img/p/1/5/3/7/1/15371.jpg</link_imagem>
+            <preco>190.00 USD</preco>
+            <disponibilidade>indisponivel</disponibilidade>
+            <marca>Lexmark</marca>
+            <title>TONER LEXMARK W84020H BLACK - W84020H</title>
+        </item>
+    </channel>
+</rss>
+```
+
+
+
+## Referências utilizadas
+
+Para utilização do Spring Security na criação do Whitelist com o objetivo de permitir chamadas realizadas somente de hosts autorizados, foram utilizadas as seguintes referências.
+
+- https://www.geekyhacker.com/2019/12/10/spring-boot-security-restrict-requests-to-ip-address-range/
+- https://www.baeldung.com/spring-security-whitelist-ip-range
+- https://codetinkering.com/spring-forwarded-headers-example/
+
+Para nomeação dinâmica da tabela do banco de dados no JPA Hibernate foi utilzada a estratégia **PhysicalNamingStrategy** onde o nome é enviado através de variável de ambiente que é adquirido através de um Bean de config do Spring e repassado a uma classe filha de **PhysicalNamingStrategyStandardImpl** segundo as seguintes referências:
+
+- https://thorben-janssen.com/naming-strategies-in-hibernate-5/
+- https://www.baeldung.com/hibernate-field-naming-spring-boot
+
+Para expor o container docker para a internet foi necessário instalar um container Nginx configurado para proxy reverso. Foi necessário também instalar o Certbot para geração do certificado Let's Encrypt. Instruções de como configurar um proxy reverso utilizando https estão referenciadas em:
+
+- https://stackify.com/how-to-configure-https-for-an-nginx-docker-container/
+
+  
 
