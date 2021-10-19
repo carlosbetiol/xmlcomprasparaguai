@@ -19,7 +19,8 @@
 
 <!--ts-->
 *  [Escopo e objetivo](#Escopo-e-objetivo)
-<!--te-->
+*  [Dados técnicos](#dados-tecnicos)
+*  <!--te-->
 
 
 
