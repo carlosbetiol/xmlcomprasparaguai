@@ -17,7 +17,9 @@
 
 ## Tópicos
 
-[TOC]
+<!--ts-->
+*  [Escopo e objetivo](##Escopo e objetivo)
+<!--te-->
 
 
 
