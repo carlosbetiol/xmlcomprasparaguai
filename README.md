@@ -99,8 +99,8 @@ create table custom_table_name (
    product_name varchar(255) not null default '',
    url_web varchar(255) not null default '',
    description_short text,
-   primary key (id_image,product_code) using btree,
-) engine = InnoDB;
+   primary key (id_image,product_code) using btree
+) engine InnoDB;
 ```
 
 The primary key is composed of the **id_image** and **product_code** fields, in the first one a sequential id can be stored and in the second the product code in the company's system. If there is no product code duplication then in **id_image** the value **1** can be stored for all lines. Below is a data dictionary: 
@@ -109,7 +109,7 @@ The primary key is composed of the **id_image** and **product_code** fields, in 
 - product_code - Makes up the primary key and refers to the product code in the company's system. 
 - image_url - The URL of product image on company website (must be https). 
 - price - Product price in alphanumeric type, example: 235.00 USD. 
-- availability - Product availability can be "disponível" or "indisponível". 
+- availability - Product availability can be "em estoque" or "indisponível". 
 - brand - Product brand.
 - product_name - Product name.
 - url_web - The URL of the product page on the company's website. 

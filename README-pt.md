@@ -100,8 +100,8 @@ create table custom_table_name (
    product_name varchar(255) not null default '',
    url_web varchar(255) not null default '',
    description_short text,
-   primary key (id_image,product_code) using btree,
-) engine = InnoDB;
+   primary key (id_image,product_code) using btree
+) engine InnoDB;
 ```
 
 A chave primária é composta pelos campos **id_image** e **product_code** sendo que no primeiro pode ser armazenado um id sequencial e no segundo o código do produto no sistema da empresa. Caso não haja repetição de código então no **id_image** pode ser armazenado o valor **1** para todas as linhas. Abaixo um dicionário de dados:
@@ -110,7 +110,7 @@ A chave primária é composta pelos campos **id_image** e **product_code** sendo
 - product_code - Compõe a chave primária e refere-se ao código do produto no sistema da empresa.
 - image_url - URL completa da imagem do produto no site da empresa (deve ser https).
 - price - Preço do produto no tipo alfanumérico, exemplo: 235.00 USD.
-- availability - Disponibilidade do produto podendo ser "disponível" ou "indisponível".
+- availability - Disponibilidade do produto podendo ser "em estoque" ou "indisponível".
 - brand - Marca do produto.
 - product_name - Nome do produto.
 - url_web - URL completa da página do produto no site da empresa.
