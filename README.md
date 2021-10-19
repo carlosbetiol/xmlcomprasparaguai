@@ -17,12 +17,27 @@
 
 ## Tópicos
 
-<!--ts-->
-*  [Escopo e objetivo](#Escopo-e-objetivo)
-*  [Dados técnicos](#dados-tecnicos)
-*  <!--te-->
+* [Escopo e objetivo](#Escopo-e-objetivo)
 
+* [Dados técnicos](#Dados-técnicos)
 
+* [Dependências](#Dependências)
+
+* [Banco de dados](#Banco-de-dados)
+
+* [Compilação e execução](#Compilação-e-execução)
+
+* [Docker container](#Docker-container)
+
+* [Métodos](#Métodos)
+
+* [Respostas](#respostas)
+
+* [Exemplo de resposta](#Exemplo-de-resposta)
+
+* [Referências utilizadas](#Referências-utilizadas)
+
+  
 
 ## Escopo e objetivo
 
