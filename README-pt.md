@@ -13,7 +13,8 @@ Linkedin: https://www.linkedin.com/in/carlosbetiol/
 
 
 
-[Para versão em português clique aqui](https://github.com/carlosbetiol/xmlcomprasparaguai/README-pt.me)
+[To english version click here](https://github.com/carlosbetiol/xmlcomprasparaguai/README.me)
+
 
 
 
