@@ -18,7 +18,7 @@
 ## Tópicos
 
 <!--ts-->
-*  [Escopo e objetivo](##Escopo e objetivo)
+*  [Escopo e objetivo](#Escopo e objetivo)
 <!--te-->
 
 
