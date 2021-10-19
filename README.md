@@ -9,6 +9,8 @@
 
 [<img src="https://avatars.githubusercontent.com/carlosbetiol" width=115><br><sub>Carlos Betiol</sub>](https://github.com/carlosbetiol)
 
+Linkedin: https://www.linkedin.com/in/carlosbetiol/
+
 
 
 > Status do Projeto: Concluido :heavy_check_mark:
