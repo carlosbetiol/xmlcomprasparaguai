@@ -59,7 +59,7 @@ This project was developed in Java with Spring Framework and can be cloned and r
 
 ## Technical data
 
-This application was developed using the Intellij IDE and coded according to DDD modeling techniques for application constructions. 
+This application was developed using the IntelliJ IDE and coded according to DDD modeling techniques for application constructions. 
 
 JAVA 16 was used, but it can be modified to use any version from JAVA 11. For this it will be necessary to modify the POM.XML. 
 

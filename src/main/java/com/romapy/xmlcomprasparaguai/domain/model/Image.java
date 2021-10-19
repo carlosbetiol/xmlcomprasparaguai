@@ -30,7 +30,7 @@ public class Image {
     private String price;
 
     @JsonProperty("disponibilidade")
-    @Column(name = "disponibilidade")
+    @Column(name = "availability")
     private String availability;
 
     @JsonProperty("marca")

@@ -60,7 +60,7 @@ Este projeto foi desenvolvido em Java com Spring Framework e pode ser clonado e 
 
 ## Dados técnicos
 
-Este programa foi desenvolvido utilizando a IDE Intellij e codificado segundo técnicas da modelagem DDD de construções de aplicações.
+Este programa foi desenvolvido utilizando a IDE IntelliJ e codificado segundo técnicas da modelagem DDD de construções de aplicações.
 
 Foi utilizado o JAVA 16, porém pode ser modificado para utilizar qualquer versão a partir do JAVA 11. Para isto será necessário modificar o POM.XML. 
 
