@@ -5,7 +5,7 @@
 
 
 
-## Desenvolvedor
+## Developer
 
 [<img src="https://avatars.githubusercontent.com/carlosbetiol" width=115><br><sub>Carlos Betiol</sub>](https://github.com/carlosbetiol)
 
@@ -17,55 +17,57 @@ Linkedin: https://www.linkedin.com/in/carlosbetiol/
 
 
 
-> Status do Projeto: Concluido :heavy_check_mark:
+
+
+> Project Status: Finished :heavy_check_mark:
 
 
 
 ## Tópicos
 
-* [Escopo e objetivo](#Escopo-e-objetivo)
+* [Scope and goal](#Scope-and-goal)
 
-* [Dados técnicos](#Dados-técnicos)
+* [Technical data](#Technical-data)
 
-* [Dependências](#Dependências)
+* [Dependences](#Dependences)
 
-* [Banco de dados](#Banco-de-dados)
+* [Database](#Database)
 
-* [Compilação e execução](#Compilação-e-execução)
+* [Compile and run](#Compile-and-run)
 
 * [Docker container](#Docker-container)
 
-* [Métodos](#Métodos)
+* [Methods](#Methods)
 
-* [Respostas](#respostas)
+* [Results](#results)
 
-* [Exemplo de resposta](#Exemplo-de-resposta)
+* [Sample result](#Sample-result)
 
-* [Referências utilizadas](#Referências-utilizadas)
+* [References](#References)
 
   
 
-## Escopo e objetivo
+## Scope and goal
 
-Disponibilizar um recurso **XML** para ser utilizado pelo site https://www.comprasparaguai.com.br contendo dados da empresa contratante e seus produtos, incluindo preços, disponibilidades de estoque, URLs do produto, URLs de imagens e outros dados necessários conforme a estrutura especificada pelo site.
+Provide a **XML** resource to be used by the website https://www.comprasparaguai.com.br containing data on the contracting company and its products, including prices, stock availability, product URLs, image URLs and other data required according to the structure specified by the site. 
 
-Este projeto foi desenvolvido em Java com Spring Framework e pode ser clonado e reutilizado por desenvolvedores que queiram utilizar recursos de segurança para seus dados ao integrar suas empresas com o comprasparaguai.com.br.
-
-
-
-## Dados técnicos
-
-Este programa foi desenvolvido utilizando a IDE Intellij e codificado segundo técnicas da modelagem DDD de construções de aplicações.
-
-Foi utilizado o JAVA 16, porém pode ser modificado para utilizar qualquer versão a partir do JAVA 11. Para isto será necessário modificar o POM.XML. 
-
-Maven foi o gerenciador de pacotes utilizado para o projeto.
-
-Todos os parâmetros como: dados de conexão com o banco de dados, porta a ser utilizada, whitelist de endereços de IP, dentre outros, deverão ser enviados como variáveis de ambiente.
+This project was developed in Java with Spring Framework and can be cloned and reused by developers who want to use security features for their data when integrating their companies with comprasparaguai.com.br. 
 
 
 
-## Dependências
+## Technical data
+
+This application was developed using the Intellij IDE and coded according to DDD modeling techniques for application constructions. 
+
+JAVA 16 was used, but it can be modified to use any version from JAVA 11. For this it will be necessary to modify the POM.XML. 
+
+Maven was the package manager used for the project. 
+
+All parameters such as: database connection data, port to be used, IP address whitelist, among others, must be sent as environment variables. 
+
+
+
+## Dependences
 
 - Spring boot starter web
 - MySQL connector Java (v8.0.25)
@@ -76,13 +78,13 @@ Todos os parâmetros como: dados de conexão com o banco de dados, porta a ser u
 
 
 
-## Banco de dados
+## Database
 
-O projeto foi preparado para conexão com banco de dados **MySQL** versão 5.6 utilizando o dialeto MySQL5Dialect, entretanto ele funcionará para conexão em versões mais atuais do MySQL, sendo necessário para isto, mudar dialeto no application.properties para org.hibernate.dialect.MySQL8Dialect.
+The project was prepared for connection to database **MySQL** version 5.6 using the MySQL5Dialect dialect, however it will work for connection in more recent versions of MySQL, being necessary for this, change dialect in application.properties to org.hibernate. dialect.MySQL8Dialect. 
 
-Será necessário utilizar uma tabela no banco de dados cujo nome deve ser identificado pelo conteúdo da variável de ambiente **TABLE_NAME**. Também poderá ser utilizado uma **VIEW** do banco de dados caso haja necessidade de transformação direta de dados através de **SELECT**.
+It will be necessary to use a table in the database whose name must be identified by the contents of the environment variable **TABLE_NAME**. A **VIEW** of the database can also be used if there is a need for direct data transformation through **SELECT** statement. 
 
-A estrutura de dados deve ser como segue:
+The data structure should be as follows: 
 
 ```
 create table custom_table_name (
@@ -99,29 +101,29 @@ create table custom_table_name (
 ) engine = InnoDB;
 ```
 
-A chave primária é composta pelos campos **id_image** e **product_code** sendo que no primeiro pode ser armazenado um id sequencial e no segundo o código do produto no sistema da empresa. Caso não haja repetição de código então no **id_image** pode ser armazenado o valor **1** para todas as linhas. Abaixo um dicionário de dados:
+The primary key is composed of the **id_image** and **product_code** fields, in the first one a sequential id can be stored and in the second the product code in the company's system. If there is no product code duplication then in **id_image** the value **1** can be stored for all lines. Below is a data dictionary: 
 
-- id_image - Compõe a chave primária da tabela, pode ser uma numeração sequencial ou 1.
-- product_code - Compõe a chave primária e refere-se ao código do produto no sistema da empresa.
-- image_url - URL completa da imagem do produto no site da empresa (deve ser https).
-- price - Preço do produto no tipo alfanumérico, exemplo: 235.00 USD.
-- availability - Disponibilidade do produto podendo ser "disponível" ou "indisponível".
-- brand - Marca do produto.
-- product_name - Nome do produto.
-- url_web - URL completa da página do produto no site da empresa.
-- description_short - Um breve descritivo textual do produto.
+- id_image - Composes the primary key of the table, it can be a sequential numbering or 1. 
+- product_code - Makes up the primary key and refers to the product code in the company's system. 
+- image_url - The URL of product image on company website (must be https). 
+- price - Product price in alphanumeric type, example: 235.00 USD. 
+- availability - Product availability can be "disponível" or "indisponível". 
+- brand - Product brand.
+- product_name - Product name.
+- url_web - The URL of the product page on the company's website. 
+- description_short - A brief textual description of the product. 
 
 
 
-## Compilação e execução
+## Compile and run
 
-Na pasta do projeto, utilizar para compilação e geração do artefato:
+In the project folder, use for compilation and generation of the artifact: 
 
 ```
 ./mvwn clean package
 ```
 
-Para execução serão necessárias definições das variáveis de ambiente antes da chamada do artefato executável (exemplos em linux):
+For execution it will be necessary to define the environment variables before calling the executable artifact (examples in linux): 
 
 ```
 export HOST="ip_database_host"
@@ -141,15 +143,15 @@ java -jar ./target/xmlcomprasparaguai-1.0.0.jar
 
 ## Docker container
 
-O projeto está disponível em formato de container com todas as dependências necessárias, inclusive a aplicação tomcat para ser utilizado via Docker em https://hub.docker.com/repository/docker/carlosbetiol/xmlcomprasparaguai .
+The project is available in container format with all necessary dependencies, including the tomcat application to be used via Docker at https://hub.docker.com/repository/docker/carlosbetiol/xmlcomprasparaguai . 
 
-Caso seja necessário gerar outro container Docker depois de alguma modificação em código, o arquivo POM.XML na raíz do projeto deve ser alterado buscando e substituindo a linha abaixo para o repositório desejado no Docker HUB:
+If it is necessary to generate another Docker container after some code modification, the POM.XML file at the root of the project must be changed by searching and replacing the line below for the desired repository in the Docker HUB: 
 
 ```
 <repository>carlosbetiol/xmlcomprasparaguai</repository>
 ```
 
-Uma nova compilação é necessária com a geração do novo container Docker, utilizando o profile adequado:
+A new build is needed with the generation of the new Docker container, using the appropriate profile: 
 
 ```
 ./mvnw clean package -Pdocker
@@ -157,26 +159,26 @@ Uma nova compilação é necessária com a geração do novo container Docker, u
 
 
 
-## Métodos
+## Methods
 
-Requisições para a API devem seguir os padrões:
+Requests for the API must follow the standards: 
 
-| Método | Descrição                        |
-| ------ | -------------------------------- |
-| GET    | Retorna os dados no formato XML. |
-
-
-
-## Respostas
-
-| Código | Descrição                         |
-| ------ | --------------------------------- |
-| 200    | Requisição executada com sucesso. |
-| 403    | Acesso proibido                   |
+| Method | Description                 |
+| ------ | --------------------------- |
+| GET    | Returns data in XML format. |
 
 
 
-## Exemplo de resposta
+## Results
+
+| Code | Description                    |
+| ---- | ------------------------------ |
+| 200  | Request executed successfully. |
+| 403  | Forbiden.                      |
+
+
+
+## Sample result
 
 ```
 <rss version="2.0">
@@ -223,20 +225,20 @@ Requisições para a API devem seguir os padrões:
 
 
 
-## Referências utilizadas
+## References
 
-Para utilização do Spring Security na criação do Whitelist com o objetivo de permitir chamadas realizadas somente de hosts autorizados, foram utilizadas as seguintes referências.
+To use Spring Security in creating the Whitelist in order to allow calls made only from authorized hosts, the following references were used. 
 
 - https://www.geekyhacker.com/2019/12/10/spring-boot-security-restrict-requests-to-ip-address-range/
 - https://www.baeldung.com/spring-security-whitelist-ip-range
 - https://codetinkering.com/spring-forwarded-headers-example/
 
-Para nomeação dinâmica da tabela do banco de dados no JPA Hibernate foi utilzada a estratégia **PhysicalNamingStrategy** onde o nome é enviado através de variável de ambiente que é adquirido através de um Bean de config do Spring e repassado a uma classe filha de **PhysicalNamingStrategyStandardImpl** segundo as seguintes referências:
+For dynamic naming of the database table in JPA Hibernate was used the strategy **PhysicalNamingStrategy** where the name is sent through an environment variable that is acquired through a Spring Config Bean and passed on to a child class of * *PhysicalNamingStrategyStandardImpl** according to the following references: 
 
 - https://thorben-janssen.com/naming-strategies-in-hibernate-5/
 - https://www.baeldung.com/hibernate-field-naming-spring-boot
 
-Para expor o container docker para a internet foi necessário instalar um container Nginx configurado para proxy reverso. Foi necessário também instalar o Certbot para geração do certificado Let's Encrypt. Instruções de como configurar um proxy reverso utilizando https estão referenciadas em:
+To expose the docker container to the internet it was necessary to install an Nginx container configured for reverse proxy. It was also necessary to install Certbot to generate the Let's Encrypt certificate. Instructions on how to set up a reverse proxy using https are referenced in: 
 
 - https://stackify.com/how-to-configure-https-for-an-nginx-docker-container/
 
