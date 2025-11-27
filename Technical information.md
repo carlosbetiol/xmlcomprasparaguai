@@ -12,9 +12,11 @@ docker image rm carlosbetiol/xmlcomprasparaguai:tag
 Create new:
 
 ```
-./mvnw clean package -Pdocker
+./mvnw clean package -Pdocker -Dmaven.test.skip=true
+```
 
-docker tag carlosbetiol/xmlcomprasparaguai:new_version carlosbetiol/xmlcomprasparaguai:latest
+docker tag xmlcomprasparaguai:new_version carlosbetiol/xmlcomprasparaguai:new_version
+docker tag xmlcomprasparaguai:new_version carlosbetiol/xmlcomprasparaguai:latest
 
 docker push carlosbetiol/xmlcomprasparaguai:new_version
 
